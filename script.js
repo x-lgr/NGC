@@ -175,70 +175,59 @@ const products = {
 
 // Demo video data with YouTube video IDs
 const demoVideos = {
-    'aimbot-external': {
-        title: 'Aimbot External Demo',
-        videoId: 'dQw4w9WgXcQ', // Gaming demo placeholder - replace with actual aimbot demo
-        description: 'Watch how our advanced external aimbot provides smooth, precise targeting with customizable settings.',
+    'basic-panel': {
+        title: 'NEXT GEN CHEAT BASIC PANEL Demo',
+        videoId: 'fHXRe-hbTxE',
+        description: 'Watch the demonstration of our safest and most powerful panel in the market – 100% anti-ban, fully secure for your main account!',
         highlights: [
-            'Smooth aim technology in action',
-            'Bone selection demonstration',
-            'FOV customization showcase',
-            'Undetectable operation proof'
+            'AIMBOT demonstration',
+            'AIMFOV 180° showcase',
+            'AIM SCOPE functionality',
+            'Anti-ban technology proof'
         ]
     },
-    'internal-basic': {
-        title: 'Internal Basic Demo',
-        videoId: 'jNQXAC9IVRw', // Gaming demo placeholder - replace with actual internal cheat demo
-        description: 'See our essential internal cheat package featuring wallhack, ESP, and basic aimbot functionality.',
+    'ngs-aimkill-exe': {
+        title: 'NGS AIMKILL EXE Demo',
+        videoId: 'fHXRe-hbTxE',
+        description: 'See our advanced EXE-based aimkill system with maximum precision and teleport capabilities for ultimate domination.',
         highlights: [
-            'Wallhack/ESP visualization',
-            'Basic aimbot performance',
-            'Player information display',
-            'Safe injection process'
+            'AIMKILL MAX demonstration',
+            'AIMKILL 360° showcase',
+            'TELE KILL 10M functionality',
+            'Advanced ESP features'
         ]
     },
-    'silent-aim': {
-        title: 'Silent Aim Demo',
-        videoId: 'L_jWHffIx5E', // Gaming demo placeholder - replace with actual silent aim demo
-        description: 'Experience the power of invisible targeting that hits enemies without moving your crosshair.',
+    'ngc-aimkill-injector': {
+        title: 'NGC AIMKILL INJECTOR Demo',
+        videoId: 'fHXRe-hbTxE',
+        description: 'Watch our APK-based injector with advanced aimkill functions and teleport capabilities for mobile gaming dominance.',
         highlights: [
-            'Invisible targeting demonstration',
-            'No crosshair movement proof',
-            'Advanced prediction system',
-            'Anti-cheat bypass technology'
+            'Mobile injector demonstration',
+            'AIMKILL functionality showcase',
+            'Teleport capabilities',
+            'Mobile gaming optimization'
         ]
     },
-    'aimkill': {
-        title: 'Aimkill Demo',
-        videoId: 'kJQP7kiw5Fk', // Gaming demo placeholder - replace with actual aimkill demo
-        description: 'Witness the ultimate precision tool with instant kill capabilities and target prioritization.',
+    'ngc-aim-silent-exe': {
+        title: 'NGC AIM SILENT EXE Demo',
+        videoId: 'fHXRe-hbTxE',
+        description: 'Experience our advanced silent aim system with ghost hack, freeze kill, and comprehensive ESP features for stealth gameplay.',
         highlights: [
-            'Instant kill mode showcase',
-            'Target prioritization system',
-            'Damage multiplier effects',
-            'Rage mode demonstration'
+            'Silent aim demonstration',
+            'Ghost hack showcase',
+            'Freeze kill functionality',
+            'Stealth gameplay features'
         ]
     },
-    'streamer-panel': {
-        title: 'Streamer Panel Demo',
-        videoId: 'ZZ5LpwO-An4', // Gaming demo placeholder - replace with actual streamer panel demo
-        description: 'Explore the professional streaming overlay with viewer-safe interface and customizable controls.',
-        highlights: [
-            'Viewer-safe interface design',
-            'Custom hotkey configuration',
-            'Overlay control system',
-            'Stream integration features'
-        ]
-    },
-    'emulator-bypass': {
-        title: 'Emulator Bypass Demo',
-        videoId: 'ALZHF5UqnU4', // Gaming demo placeholder - replace with actual emulator bypass demo
-        description: 'Learn how our advanced emulator detection bypass works for mobile gaming on PC.',
+    'ngc-uid-bypass': {
+        title: 'NGC UID BYPASS Demo',
+        videoId: 'fHXRe-hbTxE',
+        description: 'Learn how our bypass emulator detection works and play CS Rank and BR Rank matches with mobile players.',
         highlights: [
             'Emulator detection bypass',
-            'Device spoofing capabilities',
-            'Hardware ID masking',
-            'Mobile game compatibility'
+            'CS Rank support demonstration',
+            'BR Rank functionality',
+            'Mobile player matchmaking'
         ]
     }
 };
@@ -314,6 +303,7 @@ purchaseButtons.forEach(button => {
 demoButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const productId = e.target.getAttribute('data-product') || e.target.closest('.demo-btn').getAttribute('data-product');
+        const videoId = e.target.getAttribute('data-video') || e.target.closest('.demo-btn').getAttribute('data-video');
         const demo = demoVideos[productId];
         
         if (demo) {
@@ -328,8 +318,21 @@ demoButtons.forEach(button => {
                 demoFeatures.appendChild(li);
             });
             
-            // Create YouTube player
-            createYouTubePlayer(demo.videoId);
+            // Create YouTube player with the specific video ID
+            createYouTubePlayer(videoId || demo.videoId);
+            
+            demoModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        } else if (videoId) {
+            // Fallback for direct video ID
+            demoTitle.textContent = 'Product Demo';
+            demoDescription.textContent = 'Watch this demonstration to see the cheat in action.';
+            
+            // Clear demo features
+            demoFeatures.innerHTML = '';
+            
+            // Create YouTube player with the video ID
+            createYouTubePlayer(videoId);
             
             demoModal.style.display = 'block';
             document.body.style.overflow = 'hidden';

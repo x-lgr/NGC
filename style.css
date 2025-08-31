@@ -203,6 +203,22 @@ body {
     color: white;
 }
 
+.discord-btn {
+    background: linear-gradient(45deg, #7289da, #5865f2) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 15px rgba(114, 137, 218, 0.3) !important;
+}
+
+.discord-btn:hover {
+    background: linear-gradient(45deg, #5865f2, #7289da) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(114, 137, 218, 0.4) !important;
+}
+
+.discord-btn i {
+    margin-right: 8px;
+}
+
 /* Section Styles */
 section {
     padding: 80px 0;
@@ -240,8 +256,9 @@ section {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
+    align-items: stretch;
 }
 
 .product-card {
@@ -254,6 +271,10 @@ section {
     border: 2px solid rgba(0, 255, 127, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(0, 255, 127, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 600px;
 }
 
 .product-card:hover {
@@ -298,6 +319,7 @@ section {
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
+    flex-shrink: 0;
 }
 
 .product-card p {
@@ -312,6 +334,7 @@ section {
     list-style: none;
     margin-bottom: 2rem;
     text-align: left;
+    flex-grow: 1;
 }
 
 .features-list li {
@@ -343,6 +366,7 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 0.5rem;
     margin-bottom: 1.5rem;
+    flex-shrink: 0;
 }
 
 .price-tier {
@@ -401,6 +425,8 @@ section {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+    margin-top: auto;
+    padding-top: 1.5rem;
 }
 
 .demo-btn {
